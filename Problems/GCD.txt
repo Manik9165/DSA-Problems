@@ -1,0 +1,40 @@
+Approach 1 - 
+
+Loop from the smallest number from (a,b) to 1 and return the first number which is 
+divisible by both a and b. 
+That will be the GCD. 
+
+Approach 2 -
+
+Using Eucleadian Algo, which states - 
+GCD(a,b) == GCD(a-b, b);
+
+Code - 
+
+vector<long long> lcmAndGcd(long long A , long long B) {
+        // code here
+        vector<long long> result;
+        long long lcm, tempA, tempB;
+        tempA = A;
+        tempB = B;
+        
+        while(A>0 && B>0){
+            if(A>B)
+            A = A%B;
+            else
+            B = B%A;
+        }
+        
+        lcm = (tempA*tempB);
+        
+        if(A){
+        lcm = lcm/A;
+        result.push_back(lcm);
+        result.push_back(A);}
+        else{
+        lcm = lcm/B;
+        result.push_back(lcm);
+        result.push_back(B);}
+        
+        return result;
+    }
